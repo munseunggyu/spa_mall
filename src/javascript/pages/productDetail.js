@@ -1,6 +1,20 @@
 class ProductDetail{
   constructor(id){
     this.id = id
+    this.product = {}
+  }
+
+
+  async getProductData(){
+    const response = await fetch(`http://test.api.weniv.co.kr/mall/${this.id}`)
+    const data = await response.json()
+
+    this.product = await data
+  }
+
+  async setProductList(){
+    await this.getProductData()
+    console.log(this.product)
   }
   render(){
     const container = document.createElement('div')
@@ -13,7 +27,7 @@ class ProductDetail{
 
     container.appendChild(anchor)
     container.append(el)
-
+    this.setProductList()
     return container
   }
 }

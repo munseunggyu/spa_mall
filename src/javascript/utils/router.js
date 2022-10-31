@@ -11,7 +11,7 @@ class Router{
     // detail 페이지 이동
     for(const key in routes){
       const route = routes[key]
-      if(key.indexOf(':')>-1){
+      if(key.indexOf(':') > -1){
         const [_,routeName,...param] = key.split('/')
         this.routes['/' + routeName] = route
         delete this.routes[key] // id값만 따로 넘겨줄거기 때문에 삭제한다.
@@ -40,9 +40,10 @@ class Router{
   }
 
   routing(pathname){
+    console.log(pathname.split('/'))
     const [_,routeName, param] = pathname.split('/')
+    console.log(param)
     let page = ''
-
     
     if(this.routes[pathname]){
       const component = new this.routes[pathname]
