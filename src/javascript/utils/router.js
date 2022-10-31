@@ -8,6 +8,15 @@ class Router{
       console.error('Can not initiailize routes, need routes!')
     }
     this.routes = routes
+    // detail 페이지 이동
+    for(const key in routes){
+      const route = routes[key]
+      if(key.indexOf(':')>-1){
+        const [_,routeName,...param] = key.split('/')
+        this.routes['/' + routeName] = route
+        delete this.routes[key] // id값만 따로 넘겨줄거기 때문에 삭제한다.
+      }
+    }
   }
   init(rootElementId){
     if(!rootElementId){
@@ -31,12 +40,16 @@ class Router{
   }
 
   routing(pathname){
-    const [_,routeName,...param] = pathname.split('/')
+    const [_,routeName, param] = pathname.split('/')
     let page = ''
 
+    
     if(this.routes[pathname]){
       const component = new this.routes[pathname]
-      page = component.render()
+      page = component.render() 
+    }else if(param){ // detail/:id 페이지를 처리하기 위해 
+      const component = new this.routes['/' + routeName](param)
+      page = component.render() 
     }
     
     if(page){
@@ -44,7 +57,6 @@ class Router{
     }
   }
   render(page){
-    console.log('hi')
     const rootElement = document.querySelector(this.rootElementId)
     rootElement.innerHTML = ''
     rootElement.appendChild(page)
