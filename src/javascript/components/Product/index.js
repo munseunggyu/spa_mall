@@ -1,1 +1,2 @@
-export {default as ProductItem} from './productItem.js'
+// export {default as ProductItem} from './productItem.js'
+

@@ -4,7 +4,6 @@ class ProductDetail{
     this.product = {}
   }
 
-
   async getProductData(){
     const response = await fetch(`http://test.api.weniv.co.kr/mall/${this.id}`)
     const data = await response.json()

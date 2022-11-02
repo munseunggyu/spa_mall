@@ -1,4 +1,4 @@
-class ProductItem{
+export default class ProductItem{
   constructor(item){
     this.item = item
   }
@@ -30,6 +30,8 @@ class ProductItem{
     const productType = document.createElement('span')
     productType.innerText = '원'
 
+    productImageContainer.appendChild(productImage)
+
     productPrice.appendChild(productType)
     productPriceContainer.appendChild(productPrice)
 
@@ -41,5 +43,4 @@ class ProductItem{
 
     return productItem
   }
-
 }
