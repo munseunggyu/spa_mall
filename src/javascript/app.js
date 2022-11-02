@@ -1,4 +1,4 @@
-import {ProductPage,ProductDetail} from './pages/index.js'
+import {ProductPage,ProductDetail, Test, TestDetail} from './pages/index.js'
 import {Router} from './utils/index.js'
 
 export default class App{
@@ -11,6 +11,8 @@ export default class App{
     const router = new Router({
       "/":ProductPage,
       "/detail/:id":ProductDetail,
+      "/test":Test,
+      "/testDetail/:id":TestDetail
     })
     router.init(el)
   }

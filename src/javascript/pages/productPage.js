@@ -17,16 +17,34 @@ class ProductPage{
     await this.getProductData()
     
     this.mainElement.classList.add('product')
-    this.mainElement.innerHTML = `
-      <h1 class='ir'>상품목록 페이지입니다.</h1>
-      <ul class='product-list'> </ul> 
-    `
-    const productList = this.mainElement.querySelector('.product-list')
+
+    const productPageHeader = document.createElement('h1')
+    productPageHeader.setAttribute('class','ir')
+    productPageHeader.textContent = '상품목록 페이지입니다.'
+
+    const productList = document.createElement('ul')
+    productList.setAttribute('class','product-list')
+
+    this.mainElement.appendChild(productPageHeader)
 
     this.product.forEach(item => {
+      const productItem = document.createElement('li')
+      productItem.setAttribute('class','product-item')
+
       const productCard = new ProductCard(item)
-      productList.append(productCard.render())
+      productItem.appendChild(productCard.render())
+      productList.appendChild(productItem)
     })
+
+
+    // test
+    const test = document.createElement('a')
+    test.setAttribute('href','/test')
+    test.innerText = 'test'
+
+    this.mainElement.appendChild(test)
+    this.mainElement.appendChild(productList)
+
   }
   
   render(){
