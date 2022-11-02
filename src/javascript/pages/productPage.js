@@ -1,5 +1,4 @@
-// import { ProductItem } from "../components/Product/index.js"
-import ProductItem from '../components/Product/productItem.js';
+import { ProductCard } from "../components/ProductCard/index.js"
 
 class ProductPage{
   constructor(){
@@ -25,8 +24,8 @@ class ProductPage{
     const productList = this.mainElement.querySelector('.product-list')
 
     this.product.forEach(item => {
-      const productItem = new ProductItem(item)
-      productList.append(productItem.render())
+      const productCard = new ProductCard(item)
+      productList.append(productCard.render())
     })
   }
   

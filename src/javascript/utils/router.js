@@ -41,6 +41,7 @@ class Router{
         this.routePush(e.target.closest('a').href)
       }
     })
+    
     window.onpopstate = () => this.routing(window.location.pathname) // 뒤로가기
   }
   routePush(pathname){
