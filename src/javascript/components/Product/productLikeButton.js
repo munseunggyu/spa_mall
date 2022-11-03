@@ -18,15 +18,12 @@ class ProductLikeButton{
       e.preventDefault()
       e.stopPropagation()
       const likeList = JSON.parse(localStorage.getItem('likeList'))
-      if(this.like){
-        localStorage.setItem('likeList',JSON.stringify(likeList.filter(id => id !== this.productId)))
-        likeButton.classList.remove('on')
-        this.like = false
-      }else{
-        localStorage.setItem('likeList',JSON.stringify([...likeList,this.productId]))
-        likeButton.classList.add('class','on')
-        this.like = true
-      }
+
+      this.like ? likeButton.classList.remove('on') : likeButton.classList.add('class','on')
+      const newLikeList = this.like ? likeList.filter(id => id !== this.productId) : [...likeList,this.productId]
+      localStorage.setItem('likeList',JSON.stringify(newLikeList))
+      this.like = !this.like
+
     })
   }
 
