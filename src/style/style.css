@@ -118,3 +118,12 @@ table, thead, tbody, tr {
   height: 22px;
   background: url(../assets/icon-delete.svg) no-repeat center / contain;
 }
+
+.like-btn{
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+}
+.on{
+  background-color: red;
+}

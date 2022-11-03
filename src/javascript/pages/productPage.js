@@ -40,9 +40,10 @@ class ProductPage{
     // test
     const test = document.createElement('a')
     test.setAttribute('href','/test')
+    test.setAttribute('class','ir')
     test.innerText = 'test'
-
     this.mainElement.appendChild(test)
+
     this.mainElement.appendChild(productList)
 
   }
