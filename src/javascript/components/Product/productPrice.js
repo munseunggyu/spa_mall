@@ -1,9 +1,6 @@
-class ProductPrice{
-  constructor(productPrice,discount){
-    this.productPrice = productPrice
-    this.discount = discount
-    this.preDiscountPrice = 0
-  }
+import Component from "../../core/Component.js"
+
+class ProductPrice extends Component{
 
   render(){
     const productPriceContainer = document.createElement('div')
@@ -17,20 +14,20 @@ class ProductPrice{
 
     productPriceContainer.appendChild(productPrice)
 
-    if(this.discount){
+    if(this.props.discount){
       const discountRateContainer = document.createElement('div')
       discountRateContainer.setAttribute('class','price-discount')
       
       
       const originPrice = document.createElement('strong')
       originPrice.setAttribute('class','price-strikethrough')
-      originPrice.innerText = this.productPrice
+      originPrice.innerText = this.props.productPrice
       
-      this.productPrice = this.productPrice - this.productPrice*(0.01*this.discount)
+      this.props.productPrice = this.props.productPrice - this.props.productPrice*(0.01*this.props.discount)
       
       const discountRateDisplay = document.createElement('strong')
       discountRateDisplay.setAttribute('class','discount-rate')
-      discountRateDisplay.innerText = this.discount + '%'
+      discountRateDisplay.innerText = this.props.discount + '%'
       
       discountRateContainer.appendChild(originPrice)
       discountRateContainer.appendChild(priceType.cloneNode(true))
@@ -38,7 +35,7 @@ class ProductPrice{
       productPriceContainer.appendChild(discountRateContainer)
     }
 
-    productPrice.innerText = this.productPrice
+    productPrice.innerText = this.props.productPrice
 
     productPrice.appendChild(priceType)
 

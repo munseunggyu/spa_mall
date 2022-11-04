@@ -8,10 +8,13 @@ class ProductCard{
     const product = document.createElement('a')
     product.setAttribute('href', `/ detail/${this.item.id}`)
     product.setAttribute('class', 'product-item')
-    const productImage = new ProductImage(this.item.thumbnailImg)
+    const productImage = new ProductImage({src:this.item.thumbnailImg})
     const productName = new ProductName({name:this.item.productName})
-    const productPrice = new ProductPirce(this.item.price,this.item.discountRate)
-    const productLikeButton = new ProductLikeButton(this.item.id)
+    const productPrice = new ProductPirce({
+      productPrice:this.item.price,
+      discount:this.item.discountRate
+    })
+    const productLikeButton = new ProductLikeButton({productId:this.item.id})
     product.appendChild(productImage.render())
     product.appendChild(productName.render())
     product.appendChild(productPrice.render())
