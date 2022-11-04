@@ -9,13 +9,13 @@ class ProductPage{
   async getProductData(){
     const response = await fetch('http://test.api.weniv.co.kr/mall')
     const data = await response.json()
-
+    
     this.product = await data
   }
 
   async setProductList(){
     await this.getProductData()
-    
+    console.log(this.product)
     this.mainElement.classList.add('product')
 
     const productPageHeader = document.createElement('h1')

@@ -50,9 +50,7 @@ class Router{
   }
 
   routing(pathname){
-    console.log(pathname.split('/'))
     const [_,routeName, param] = pathname.split('/')
-    console.log(param)
     let page = ''
     
     if(this.routes[pathname]){
