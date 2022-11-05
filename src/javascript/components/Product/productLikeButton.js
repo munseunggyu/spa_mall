@@ -9,7 +9,6 @@ class ProductLikeButton extends Component{
   }
 
   // state가 바뀌면 랜더링이 일어난다.
-
   // 좋아요가 되어있는지 true / false로 반환해 준다.
   checkLikeList(){
     if(!localStorage.getItem('likeList')){

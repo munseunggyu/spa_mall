@@ -6,7 +6,7 @@ class ProductCard{
   }
   render(){
     const product = document.createElement('a')
-    product.setAttribute('href', `/ detail/${this.item.id}`)
+    product.setAttribute('href', `/detail/${this.item.id}`)
     product.setAttribute('class', 'product-item')
     const productImage = new ProductImage({src:this.item.thumbnailImg})
     const productName = new ProductName({name:this.item.productName})

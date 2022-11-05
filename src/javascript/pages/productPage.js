@@ -15,7 +15,6 @@ class ProductPage{
 
   async setProductList(){
     await this.getProductData()
-    console.log(this.product)
     this.mainElement.classList.add('product')
 
     const productPageHeader = document.createElement('h1')
@@ -39,8 +38,8 @@ class ProductPage{
 
     // test
     const test = document.createElement('a')
-    test.setAttribute('href','/test')
-    test.setAttribute('class','ir')
+    test.setAttribute('href','/testPage')
+    // test.setAttribute('class','ir')
     test.innerText = 'test'
     this.mainElement.appendChild(test)
 
