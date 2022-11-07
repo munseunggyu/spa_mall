@@ -8,7 +8,7 @@ class TestPage{
 
     const test = new Test()
     this.mainElement.innerText = 'hi'
-    this.mainElement.appendChild(test.initailize())
+    this.mainElement.appendChild(test.intialize())
 
     return this.mainElement
   }

@@ -15,7 +15,20 @@ class Test{
     console.log(this.lastRendered)
   }  
 
+  // const likeList = JSON.parse(localStorage.getItem('likeList'))
+  // localStorage.setItem('likeList',JSON.stringify(newLikeList))
+  getList(){
+    if(!JSON.parse(localStorage.getItem('todoList'))){
+      localStorage.setItem('todoList',JSON.stringify([]))
+    }else{
+      
+      return JSON.parse(localStorage.getItem('todoList'))
+    }
+  }
+
   render(){
+    this.state.todoList = this.getList()
+    console.log(this.state.todoList)
     const div = document.createElement('div')
     const input = document.createElement('input')
     const form = document.createElement('form')
@@ -24,6 +37,7 @@ class Test{
 
     const frag = document.createDocumentFragment()
     this.state.todoList.forEach(todo => {
+      console.log(todo.txt)
       const li = document.createElement('li')
       li.innerText = todo.txt
       frag.appendChild(li)
@@ -35,11 +49,15 @@ class Test{
     btn.addEventListener('click', (e) => {
       e.preventDefault()
       this.ul.innerHTML = null
-      this.state.todoList.push({
-        id:new Date(),
-        txt: input.value
-      })
+      localStorage.setItem('todoList',JSON.stringify([
+        ...this.state.todoList,
+        {
+          id:new Date(),
+          txt: input.value
+        }
+      ]))
       input.value = ''
+
       this.setState({todoList:this.state.todoList})
       console.log(this.state.todoList)
     })
@@ -50,11 +68,10 @@ class Test{
     div.appendChild(form)
     div.appendChild(this.ul)
 
-
     return div
   }
 
-  initailize(){ // 초기화 처음 생성 될때
+  intialize(){ // 초기화 처음 생성 될때
     const rendered = this.render() 
     this.lastRendered = rendered
     return this.lastRendered

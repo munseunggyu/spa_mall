@@ -81,7 +81,7 @@ class ProductLikeButton extends Component{
     return likeButton
   }
 
-  initailize(){ // 초기화 처음 생성 될때
+  intialize(){ // 초기화 처음 생성 될때
     const rendered = this.render() 
     this.lastRendered = rendered
     return this.lastRendered

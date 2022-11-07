@@ -9,9 +9,10 @@ export default class App{
     const {el} = this.props
 
     const router = new Router({
-      "/":ProductPage,
+      // "/":ProductPage,
+      "/":TestPage,
       "/detail/:id":ProductDetail,
-      "/testPage":TestPage,
+      // "/testPage":TestPage,
       "/testDetail/:id":TestDetail
     })
     router.init(el)
