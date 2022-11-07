@@ -23,6 +23,14 @@ class ProductPage{
 
     const productList = document.createElement('ul')
     productList.setAttribute('class','product-list')
+    // test
+    const test = document.createElement('a')
+    test.setAttribute('href','/testPage')
+    // test.setAttribute('class','ir')
+    test.setAttribute('class','test')
+
+    test.innerText = 'test'
+    productList.appendChild(test)
 
     this.mainElement.appendChild(productPageHeader)
 
@@ -34,17 +42,7 @@ class ProductPage{
       productItem.appendChild(productCard.render())
       productList.appendChild(productItem)
     })
-
-
-    // test
-    const test = document.createElement('a')
-    test.setAttribute('href','/testPage')
-    // test.setAttribute('class','ir')
-    test.innerText = 'test'
-    this.mainElement.appendChild(test)
-
     this.mainElement.appendChild(productList)
-
   }
   
   render(){

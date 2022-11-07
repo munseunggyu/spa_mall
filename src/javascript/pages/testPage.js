@@ -6,10 +6,11 @@ class TestPage{
   }
   render(){
 
-
     const test = new Test()
-    this.mainElement.appendChild(test.render())
+    this.mainElement.innerText = 'hi'
+    this.mainElement.appendChild(test.initailize())
 
+    return this.mainElement
   }
 }
 

@@ -962,3 +962,11 @@ margin-bottom 값을 다르게 합니다. (form에 이미 padding 10px이 설정
 .cart .main-link {
   background: var(--main-color) url(../assets/icon-home-white.svg) no-repeat center / 40px 40px;
 }
+
+#root{
+  display: flex;
+  flex-direction: column;
+}
+.test{
+  
+}

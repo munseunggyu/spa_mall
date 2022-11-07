@@ -11,7 +11,7 @@ export default class App{
     const router = new Router({
       "/":ProductPage,
       "/detail/:id":ProductDetail,
-      "/testPage":Test,
+      "/testPage":TestPage,
       "/testDetail/:id":TestDetail
     })
     router.init(el)

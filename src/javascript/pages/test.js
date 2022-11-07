@@ -1,51 +1,68 @@
 class Test{
   constructor(){
-    this.todoList = []
+    this.state = {
+      todoList:[]
+    }
     this.ul = document.createElement('ul')
   }
 
-  getList(){
-    this.ul.innerHTML = ''
-    this.todoList.forEach(todo => {
-      const li = document.createElement('li')
-      li.innerText = todo.txt
-      this.ul.appendChild(li)
-    })
-  }
+  setState(newState){
+    this.state = newState
+    const rendered = this.render()  // render에서 return하는 값을 바꿔서 보내준다.
+    // 그전에 render에서 return 할 값을 미리 저장하고 그것에 접근하여 그것을 바꿔주는 형식
+    this.lastRendered.replaceWith(rendered) 
+    this.lastRendered = rendered
+    console.log(this.lastRendered)
+  }  
 
   render(){
     const div = document.createElement('div')
-
     const input = document.createElement('input')
-
     const form = document.createElement('form')
-
     const btn = document.createElement('button')
     btn.innerText = 'submit'
 
+    const frag = document.createDocumentFragment()
+    this.state.todoList.forEach(todo => {
+      const li = document.createElement('li')
+      li.innerText = todo.txt
+      frag.appendChild(li)
+    })
+    this.ul.appendChild(frag)
 
     // 즉 render에서 for문 돌면서 그려준다 but
     // rendering 하면 상태가 변한다.
-
     btn.addEventListener('click', (e) => {
       e.preventDefault()
-      console.log(input.value)
-
-      this.todoList.push({
+      this.ul.innerHTML = null
+      this.state.todoList.push({
         id:new Date(),
         txt: input.value
       })
       input.value = ''
-      this.getList()
+      this.setState({todoList:this.state.todoList})
+      console.log(this.state.todoList)
     })
-
-
 
     form.appendChild(input)
     form.appendChild(btn)
     
     div.appendChild(form)
     div.appendChild(this.ul)
+
+
+    return div
+  }
+
+  initailize(){ // 초기화 처음 생성 될때
+    const rendered = this.render() 
+    this.lastRendered = rendered
+    return this.lastRendered
+  }
+}
+
+export default Test
+
 
 
     // 상세페이지 예시
@@ -64,15 +81,3 @@ class Test{
     // div.appendChild(div1)
     // div.appendChild(div2)
     // div.appendChild(div3)
-
-    return div
-  }
-
-  // initailize(){ // 초기화 처음 생성 될때
-  //   const rendered = this.render() 
-  //   this.lastRendered = rendered
-  //   return this.lastRendered
-  // }
-}
-
-export default Test
